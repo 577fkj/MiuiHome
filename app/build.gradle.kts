@@ -16,7 +16,6 @@ android {
         versionCode = 4220
         versionName = "4.2.2" + (getGitHeadRefsSuffix(rootProject))
     }
-
     val properties = Properties()
     runCatching {
         properties.load(project.rootProject.file("local.properties").inputStream())
@@ -25,7 +24,6 @@ android {
     val keystorePwd = properties.getProperty("KEYSTORE_PASS") ?: System.getenv("KEYSTORE_PASS")
     val alias = properties.getProperty("KEY_ALIAS") ?: System.getenv("KEY_ALIAS")
     val pwd = properties.getProperty("KEY_PASSWORD") ?: System.getenv("KEY_PASSWORD")
-
     if (keystorePath != null) {
         signingConfigs {
             create("release") {
@@ -106,8 +104,9 @@ fun getGitHeadRefsSuffix(project: Project): String {
 
 dependencies {
     compileOnly("de.robv.android.xposed:api:82")
-    implementation("com.github.kyuubiran:EzXHelper:0.7.6")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation(project(":AndroidSystemBlur"))
+    implementation("com.github.kyuubiran:EzXHelper:0.8.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.0-alpha01")
     implementation("com.microsoft.appcenter:appcenter-crashes:4.4.3")
     implementation("com.microsoft.appcenter:appcenter-analytics:4.4.3")
 }

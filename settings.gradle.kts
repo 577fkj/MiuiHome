@@ -17,3 +17,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "MiuiHome"
 include(":app")
+include(":hidden-api")
+include(":AndroidSystemBlur")
